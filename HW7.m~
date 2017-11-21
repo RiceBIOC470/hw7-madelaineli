@@ -13,7 +13,7 @@ clear all
 % meaning of these two points.
 % at x = 0: initial population
 % at x = 1: point of maximum growth
-
+%{
 % Part 2: Evaluate the stability of these fixed points. Does it depend on
 % the value of the parameter a? 
 syms X;
@@ -23,8 +23,8 @@ figure(1)
 fplot(a1*X*(1-X))
 figure(2)
 fplot(a2*X*(1-X))
-% These fixed points does not depends on the value of a. a determines the
-% speed at which population reaches the maximum at x = 1
+% It depends on the value of a. When a > 0, X=1 is stable, X=0 isn't. When
+% a<0, X=0 is stable, X=1 isn't. 
 
 % Part 3: Write a function that takes two inputs - the initial condition x0
 % and the a parameter and integrates the equation forward in time. Make
@@ -32,7 +32,7 @@ fplot(a2*X*(1-X))
 % required for the population to reach 99% of its maximum value. 
 figure(3)
 [t1, treq1] = timeforward(0.1,10)
-
+%}
 % Part 4: Another possible model is to consider discrete generations
 % instead allowing the population to vary continuously. e.g. X(t+1) = a*
 % X(t)*(1-X(t)). Consider this model and vary the a parameter in the range 0
@@ -43,21 +43,19 @@ figure(3)
 % Xf at each value of a. Explain your results. 
 
 figure(4)
-for a = 0:0.5:5
-    x0 = rand(1,200);
+for a = 0:0.2:4
     for i = 1:200
-        x1 = a.*x0(i).*(1-x0(i));
-        for j = 1:200
+        x0 = rand;
+        x1 = a.*x0.*(1-x0);
+        for j = 1:500
             x2 = a.*x1.*(1-x1);
             x3 = a.*x2.*(1-x2);
-            plot(a,x3)
-            hold on
         end
+        plot(a,x3)
+        hold on
     end
 end
-% the maximum value of x(1-x) = 0.25, as a increases, the maximum value
-% increases. and thus the Xf increases. 
-
+%{
 % Problem 2. Genetic toggle switches. 
 % Consider a genetic system of two genes A and B in which each gene
 % product represses the expression of the other. Make the following
@@ -119,4 +117,4 @@ for y=0:0.05:5
     rts=rts(imag(rts)==0);
     plot(y*ones(length(rts),1),rts,'r-');
 end
-
+%}
