@@ -1,6 +1,17 @@
 %HW7
 clear all
 
+%GB comments
+1a 90 An initial population of what? Also, by the graphs its clear that some maximum occurs…the more interesting aspect is to explain it. 
+1b 100
+1c 95 missing axis labels
+1d 50 should observe points of bifurcations as a function of a. 
+2a 50 wrong equations used. It should be [V/(1+x(2)^4)-x(1); V/(1+x(1)^4)-x(2)];
+2b. 100 correctly generated plots, but the equations used are wrong. I will give full credit
+2c  100 same as 2b. 
+overall: 84
+
+
 % Problem 1: Modeling population growth
 % The simplest model for a growing population assumes that each current
 % individual has equal likelihood to divide, which yields a differential
